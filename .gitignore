@@ -1,4 +1,13 @@
 .classpath
 .project
-.settings
-/target/
+.settings/
+
+log/
+target/
+
+*.class
+
+build/
+
+.project
+.classpath
