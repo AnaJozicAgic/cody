@@ -1,10 +1,10 @@
 package cody.model.bo;
 
 import cody.model.dto.Snipet;
-import cody.model.dto.User;
+import cody.model.dto.Account;
 
 public class CheckHelper {
-	public static boolean isUserNotNull(User user) {
+	public static boolean isUserNotNull(Account user) {
 		return false;
 	}
 
@@ -18,7 +18,7 @@ public class CheckHelper {
 
 	}
 
-	public static boolean isValidUser(User user) {
+	public static boolean isValidUser(Account user) {
 		return false;
 
 	}

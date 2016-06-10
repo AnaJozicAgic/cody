@@ -1,12 +1,12 @@
 package cody.model.bo;
 
-import cody.model.dto.User;
+import cody.model.dto.Account;
 
 public interface UserBoInterface {
 
-	public boolean addUser(User user);
+	public boolean addUser(Account user);
 
-	public User readUser(String username, String password);
+	public Account readUser(String username, String password);
 
 	public boolean userExists(String username);
 

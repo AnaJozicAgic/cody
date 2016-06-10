@@ -1,17 +1,17 @@
 package cody.model.bo;
 
-import cody.model.dto.User;
+import cody.model.dto.Account;
 
 public class UserBoImplementacija implements UserBoInterface{
 
 	@Override
-	public boolean addUser(User user) {
+	public boolean addUser(Account user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public User readUser(String username, String password) {
+	public Account readUser(String username, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}

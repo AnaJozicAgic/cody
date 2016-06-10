@@ -1,4 +1,4 @@
-package cody.model.dao;
+package cody.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,7 @@ import java.sql.DriverManager;
 public class ConnectionManager {
 
 		private static ConnectionManager instance = null;
-
-
+		
 		private final String USERNAME = "root";
 		private final String PASSWORD = "root";
 		private final String CONN_STRING = "jdbc:mysql://localhost/snipet_djeljenje";
