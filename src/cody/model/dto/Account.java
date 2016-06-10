@@ -1,11 +1,11 @@
 package cody.model.dto;
 
-public class User {
+public class Account {
+	
 	private String username;
 	private String password;
 	private String name;
-	private String secondname;
-	private String city;
+	private String secondName;
 	private String email;
 
 	public String getUsername() {
@@ -32,20 +32,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getSecondname() {
-		return secondname;
+	public String getSecondName() {
+		return secondName;
 	}
 
-	public void setSecondname(String secondname) {
-		this.secondname = secondname;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
 	}
 
 	public String getEmail() {
