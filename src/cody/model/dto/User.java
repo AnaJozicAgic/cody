@@ -4,7 +4,6 @@ public class User {
 	private String username;
 	private String password;
 	private String name;
-	private String secondname;
 	private String email;
 
 	public String getUsername() {
@@ -29,14 +28,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getSecondname() {
-		return secondname;
-	}
-
-	public void setSecondname(String secondname) {
-		this.secondname = secondname;
 	}
 
 	public String getEmail() {
