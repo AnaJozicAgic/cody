@@ -5,7 +5,6 @@ public class User {
 	private String password;
 	private String name;
 	private String secondname;
-	private String city;
 	private String email;
 
 	public String getUsername() {
@@ -38,14 +37,6 @@ public class User {
 
 	public void setSecondname(String secondname) {
 		this.secondname = secondname;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
 	}
 
 	public String getEmail() {
