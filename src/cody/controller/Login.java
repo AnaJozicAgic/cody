@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cody.model.bo.UserBoImplementacija;
-import cody.model.dto.User;
+import cody.model.dto.Account;
 
 /**
  * Servlet implementation class Login
@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		UserBoImplementacija userBo = new UserBoImplementacija();
-		User user = userBo.readUser(username, password);
+		Account user = userBo.readUser(username, password);
 		
 		if(user != null) {
 			request.getSession().setAttribute("user", user);

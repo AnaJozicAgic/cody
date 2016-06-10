@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cody.model.bo.UserBoImplementacija;
-import cody.model.dto.User;
+import cody.model.dto.Account;;
 
 /**
  * Servlet implementation class Register
@@ -31,7 +31,7 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User user = new User();
+		Account user = new Account();
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
 		user.setName(request.getParameter("name"));
