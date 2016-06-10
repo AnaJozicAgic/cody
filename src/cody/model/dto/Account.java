@@ -5,7 +5,10 @@ public class Account {
 	private String username;
 	private String password;
 	private String name;
+<<<<<<< HEAD:src/cody/model/dto/Account.java
 	private String secondName;
+=======
+>>>>>>> master:src/cody/model/dto/User.java
 	private String email;
 
 	public String getUsername() {
@@ -32,6 +35,7 @@ public class Account {
 		this.name = name;
 	}
 
+<<<<<<< HEAD:src/cody/model/dto/Account.java
 	public String getSecondName() {
 		return secondName;
 	}
@@ -40,6 +44,8 @@ public class Account {
 		this.secondName = secondName;
 	}
 
+=======
+>>>>>>> master:src/cody/model/dto/User.java
 	public String getEmail() {
 		return email;
 	}
