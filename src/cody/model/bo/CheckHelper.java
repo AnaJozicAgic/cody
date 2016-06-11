@@ -4,32 +4,52 @@ import cody.model.dto.Snipet;
 import cody.model.dto.Account;
 
 public class CheckHelper {
+
 	public static boolean isUserNotNull(Account user) {
-		return false;
+		if (user == null) {
+			return false;
+		}
+		return true;
 	}
 
 	public static boolean isValidPassword(String password) {
-		return false;
+		if ((password.length() < 6) || (password.trim() == "")) {
+			return false;
+		}
+		return true;
 
 	}
 
 	public static boolean isValidUsername(String username) {
-		return false;
+		if ((username.length() < 2) || (username.trim() == "") || (username.contains(";"))) {
+			return false;
+		}
+		return true;
 
 	}
 
 	public static boolean isValidUser(Account user) {
+		if (isUserNotNull(user) && isValidPassword(user.getPassword()) && isValidUsername(user.getUsername())) {
+			return true;
+		}
 		return false;
 
 	}
 
 	public static boolean isSnipetNotNull(Snipet snipet) {
-		return false;
+		if (snipet == null) {
+			return false;
+		}
+		return true;
 
 	}
 
 	public static boolean isValidId(int userId) {
 
+		if (userId > 0) {
+			return true;
+		}
 		return false;
+
 	}
 }
