@@ -55,6 +55,30 @@ public class AccountDao implements Create<Account>, Read<Account, String>, Updat
 
 		return acc;
 	}
+	
+	public Account read(String username, String password) throws SQLException {
+		Account acc = null;
+		
+		String query = "select * from account where username = ? and password = ?";
+		
+		PreparedStatement statement = connection.prepareStatement(query);
+		statement.setString(1, username);
+		statement.setString(2, password);
+		
+		ResultSet res = statement.executeQuery();
+		
+		if (res.next()) {
+			acc = new Account();
+			acc.setName(res.getString("name"));
+			acc.setSecondName(res.getString("secondName"));
+			acc.setUsername(res.getString("username"));
+			acc.setPassword(res.getString("password"));
+			acc.setEmail(res.getString("email"));
+			res.close();
+		}
+		
+		return acc;
+	}
 
 	@Override
 	public void update(Account type, String index) throws SQLException {

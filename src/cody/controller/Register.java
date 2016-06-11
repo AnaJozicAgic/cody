@@ -9,48 +9,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cody.model.bo.UserBoImplementacija;
+import cody.model.bo.validate.ValidateException;
 import cody.model.dto.Account;
 
-/**
- * Servlet implementation class Register
- */
 @WebServlet("/Register")
 public class Register extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Register() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	UserBoImplementacija bo;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	public Register() {
+
+	}
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		bo = new UserBoImplementacija();
+
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		Account user = new Account();
+
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
 		user.setName(request.getParameter("name"));
 		user.setEmail(request.getParameter("email"));
 
-		UserBoImplementacija userBo = new UserBoImplementacija();
-		boolean result = userBo.addUser(user);
-
-		if (result) {
+		try {
+			bo.addUser(user);
 			request.setAttribute("message", "Registracija uspjesna!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
-			if (userBo.readUser(user.getUsername(), user.getPassword()) != null)
-				request.setAttribute("message", "Korisnicko ime vec postoji!");
-			else
-				request.setAttribute("message", "Doslo je do greske! Pokusajte ponovo!");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+
+		} catch (ValidateException e) {
+			request.setAttribute("message", e.getMessage());
 		}
 
 	}

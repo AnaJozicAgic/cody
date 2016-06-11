@@ -3,11 +3,12 @@ package cody.integration.model.crudTest;
 import cody.model.dto.Account;
 import cody.model.dto.Snipet;
 
-public class CrudTestHelper {
+public class IntegrationTestDataHelper {
 
 	public static final String SNIPET_TEXT = "Snipet simple text . ovo je place holder! ";
 	public static final String TEST_USERNAME = "testUsername";
 	public static final String NOVI_EMAIL = "noviEmail";
+	public static final String TEST_PASSWORD = "testPassword";
 	
 	public Account getAccountTest1Object(){
 		
