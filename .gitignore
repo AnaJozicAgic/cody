@@ -1,5 +1,19 @@
 .classpath
 .project
+<<<<<<< HEAD
 .settings
 /target/
 /build/
+=======
+.settings/
+
+log/
+target/
+
+*.class
+
+build/
+
+.project
+.classpath
+>>>>>>> ensar_bo

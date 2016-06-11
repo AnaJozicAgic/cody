@@ -1,7 +1,7 @@
 package cody.model.dto;
 
 public class Account {
-	
+
 	private String username;
 	private String password;
 	private String name;

@@ -28,15 +28,15 @@ public class AccountCrudTest {
 		//zabrani autocmit
 		connection.setAutoCommit(false);
 		
-		acc = new CrudTestHelper().getAccountTest1Object();
-		acc2 = new CrudTestHelper().getAccountTest2Object();
+		acc = new IntegrationTestDataHelper().getAccountTest1Object();
+		acc2 = new IntegrationTestDataHelper().getAccountTest2Object();
 		
 	}
 	
 	@Test
 	public void createReadAccountTest() throws SQLException{
 		dao.create(acc);
-		Account acctest = dao.read(CrudTestHelper.TEST_USERNAME);
+		Account acctest = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
 		dao.create(acc2);
 		String testUsern = "testUsername2";
@@ -47,11 +47,21 @@ public class AccountCrudTest {
 		assertEquals("testName2", acctest2.getName());
 
 	}
+	
+	@Test
+	public void readWithUsernameAndPassword() throws SQLException{
+		dao.create(acc);
+		Account acctest = dao.read(IntegrationTestDataHelper.TEST_USERNAME, IntegrationTestDataHelper.TEST_PASSWORD);		
+		
+		assertEquals("testUsername", acctest.getUsername());
+		assertEquals("testPassword", acctest.getPassword());
+				
+	}
 
 	@Test
 	public void updateAccountTest() throws SQLException{
 		dao.create(acc);
-		Account acctest = dao.read(CrudTestHelper.TEST_USERNAME);
+		Account acctest = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 	
 		String testEmail = "testEmail";
 		String testNoviPassword = "noviPassword";
@@ -59,13 +69,13 @@ public class AccountCrudTest {
 		assertEquals(testEmail, acctest.getEmail() );
 		//updejt 
 		acctest.setPassword(testNoviPassword);
-		acctest.setEmail(CrudTestHelper.NOVI_EMAIL);
+		acctest.setEmail(IntegrationTestDataHelper.NOVI_EMAIL);
 		
-		dao.update(acctest, CrudTestHelper.TEST_USERNAME);
+		dao.update(acctest, IntegrationTestDataHelper.TEST_USERNAME);
 		
-		acctest = dao.read(CrudTestHelper.TEST_USERNAME);
+		acctest = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
-		assertEquals(CrudTestHelper.NOVI_EMAIL, acctest.getEmail());
+		assertEquals(IntegrationTestDataHelper.NOVI_EMAIL, acctest.getEmail());
 		assertEquals(testNoviPassword, acctest.getPassword());
 		
 		
@@ -74,12 +84,12 @@ public class AccountCrudTest {
 	@Test
 	public void delateAccountTest() throws SQLException{
 		dao.create(acc);
-		assertEquals(CrudTestHelper.TEST_USERNAME, dao.read(CrudTestHelper.TEST_USERNAME).getUsername());
+		assertEquals(IntegrationTestDataHelper.TEST_USERNAME, dao.read(IntegrationTestDataHelper.TEST_USERNAME).getUsername());
 		
 		//obrisi
-		dao.delete(CrudTestHelper.TEST_USERNAME);
+		dao.delete(IntegrationTestDataHelper.TEST_USERNAME);
 		
-		assertNull(dao.read(CrudTestHelper.TEST_USERNAME));
+		assertNull(dao.read(IntegrationTestDataHelper.TEST_USERNAME));
 	}
 	@After
 	public void tareDown() throws SQLException{

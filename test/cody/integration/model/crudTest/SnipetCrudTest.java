@@ -25,13 +25,13 @@ public class SnipetCrudTest {
 	AccountDao accDao;
 	
 	Connection connection;
-	CrudTestHelper help;
+	IntegrationTestDataHelper help;
 	
 	@Before
 	public void setUp() throws SQLException {
 		dao = new SnipetDao();
 		accDao = new AccountDao();
-		help = new CrudTestHelper();
+		help = new IntegrationTestDataHelper();
 		
 		connection = ConnectionManager.getInstance().getConnection();
 		connection.setAutoCommit(false);
@@ -47,9 +47,9 @@ public class SnipetCrudTest {
 		accDao.create(acc);
 		dao.create(snip);
 		
-		Snipet snipRead = dao.read(CrudTestHelper.TEST_USERNAME);
+		Snipet snipRead = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
-		assertEquals(CrudTestHelper.SNIPET_TEXT, snipRead.getTextSnipet());
+		assertEquals(IntegrationTestDataHelper.SNIPET_TEXT, snipRead.getTextSnipet());
 		
 	}
 	
@@ -59,14 +59,14 @@ public class SnipetCrudTest {
 		accDao.create(acc);
 		dao.create(snip);
 		
-		Snipet snipRead = dao.read(CrudTestHelper.TEST_USERNAME);
+		Snipet snipRead = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
 		String textSnipetUpdate = "updejtani snipet text neki novi snipet";
 		snipRead.setTextSnipet(textSnipetUpdate);
 		
 		dao.update(snipRead, snipRead.getSnipetId());
 		
-		snipRead = dao.read(CrudTestHelper.TEST_USERNAME);
+		snipRead = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		assertEquals(textSnipetUpdate, snipRead.getTextSnipet());
 		
 	}
@@ -75,11 +75,11 @@ public class SnipetCrudTest {
 		accDao.create(acc);
 		dao.create(snip);
 		
-		Snipet snip = dao.read(CrudTestHelper.TEST_USERNAME);
+		Snipet snip = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
 		dao.delete(snip.getSnipetId());
 		
-		assertNull(dao.read(CrudTestHelper.TEST_USERNAME));
+		assertNull(dao.read(IntegrationTestDataHelper.TEST_USERNAME));
 	}
 
 	@After
