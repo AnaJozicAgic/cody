@@ -34,8 +34,10 @@ public class Register extends HttpServlet {
 		Account user = new Account();
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
-		user.setName(request.getParameter("name"));
+		user.setName(request.getParameter("first_name"));
+		user.setSecondName(request.getParameter("last_name"));
 		user.setEmail(request.getParameter("email"));
+		user.setPassword(request.getParameter("password"));
 		
 		UserBoImplementacija userBo = new UserBoImplementacija();
 		boolean result = userBo.addUser(user);
