@@ -19,13 +19,14 @@ DROP TABLE IF EXISTS `snipet`;
 CREATE TABLE IF NOT EXISTS `snipet` (
   `snipetid` int(11) NOT NULL AUTO_INCREMENT,
   `textsnipet` text NOT NULL,
+  `name` varchar(48) NOT NULL,
   `idusername` varchar(24) NOT NULL,
   PRIMARY KEY (`snipetid`),
   KEY `idusername` (`idusername`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 
---
+
 ALTER TABLE `snipet`
   ADD CONSTRAINT `snipet_ibfk_1` FOREIGN KEY (`idusername`) REFERENCES `account` (`username`);
 

@@ -6,6 +6,7 @@ import cody.model.dto.Snipet;
 public class IntegrationTestDataHelper {
 
 	public static final String SNIPET_TEXT = "Snipet simple text . ovo je place holder! ";
+	public static final String SNIPET_NAME = "Snipet ime";
 	public static final String TEST_USERNAME = "testUsername";
 	public static final String NOVI_EMAIL = "noviEmail";
 	public static final String TEST_PASSWORD = "testPassword";
@@ -39,6 +40,7 @@ public class IntegrationTestDataHelper {
 		Snipet snip = new Snipet();
 		snip.setTextSnipet(SNIPET_TEXT);
 		snip.setUsernameId(TEST_USERNAME);
+		snip.setName(SNIPET_NAME);
 		return snip;
 	}
 	

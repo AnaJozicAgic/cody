@@ -1,5 +1,12 @@
 package cody.integration.model.crudTest;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,11 +16,6 @@ import cody.model.dao.SnipetDao;
 import cody.model.dto.Account;
 import cody.model.dto.Snipet;
 import cody.util.ConnectionManager;
-
-import static org.junit.Assert.*;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class SnipetCrudTest {
 
@@ -37,6 +39,7 @@ public class SnipetCrudTest {
 		connection.setAutoCommit(false);
 
 		snip = help.getSnipetTestObject();
+		snip2 = help.getSnipetTestObject();
 		acc = help.getAccountTest1Object();
 		
 	}
@@ -50,6 +53,40 @@ public class SnipetCrudTest {
 		Snipet snipRead = dao.read(IntegrationTestDataHelper.TEST_USERNAME);
 		
 		assertEquals(IntegrationTestDataHelper.SNIPET_TEXT, snipRead.getTextSnipet());
+		
+	}
+	
+	@Test
+	public void readAllSnipetsFromUserSnipetTest() throws SQLException {
+		
+		accDao.create(acc);
+		dao.create(snip);
+		dao.create(snip2);
+		
+		List<Snipet> snipList;
+		
+		
+		snipList = dao.readListOfUsersSnipets(IntegrationTestDataHelper.TEST_USERNAME);
+		Snipet snipA = snipList.get(0);
+		
+		assertEquals(snipA.getName(), snip.getName());
+		
+	}
+	
+	@Test
+	public void readLatestSnipetTest() throws SQLException {
+		
+		accDao.create(acc);
+		dao.create(snip);
+		dao.create(snip2);
+		
+		List<Snipet> snipList;
+		
+		
+		snipList = dao.readListOfLastSnipets();
+		Snipet snipA = snipList.get(0);
+		
+		assertEquals(snipA.getName(), snip.getName());
 		
 	}
 	

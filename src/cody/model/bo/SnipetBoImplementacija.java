@@ -1,6 +1,8 @@
 package cody.model.bo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cody.model.dao.SnipetDao;
 import cody.model.dto.Snipet;
@@ -61,6 +63,26 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 			e.printStackTrace();
 		}
 		return true;
+	
+	}
+	
+	public List<Snipet> readAllUsersSnipets(String username){
+		List<Snipet> listaSnipeta = new ArrayList<>();
+		try {
+			listaSnipeta = dao.readListOfUsersSnipets(username);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaSnipeta;
+	}
+	public List<Snipet> readLatestSnipets(){
+		List<Snipet> listaSnipeta = new ArrayList<>();
+		try {
+			listaSnipeta = dao.readListOfLastSnipets();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaSnipeta;
 	}
 
 }

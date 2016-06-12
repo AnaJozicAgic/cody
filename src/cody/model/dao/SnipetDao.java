@@ -3,9 +3,11 @@ package cody.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import cody.model.dao.abstractCrud.Create;
 import cody.model.dao.abstractCrud.Delete;
@@ -21,12 +23,13 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 	@Override
 	public void create(Snipet type) throws SQLException {
 
-		String insertValuesQuery = "insert into snipet (textsnipet, idusername) values (?,?)";
+		String insertValuesQuery = "insert into snipet (textsnipet, idusername, name) values (?,?,?)";
 
 		PreparedStatement statement = connection.prepareStatement(insertValuesQuery);
 
 		statement.setString(1, type.getTextSnipet());
 		statement.setString(2, type.getUsernameId());
+		statement.setString(3, type.getName());
 
 		statement.executeUpdate();
 	}
@@ -47,6 +50,7 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 			snip.setSnipetId(res.getInt("snipetid"));
 			snip.setTextSnipet(res.getString("textsnipet"));
 			snip.setUsernameId(res.getString("idusername"));
+			snip.setName(res.getString("name"));
 			res.close();
 		}
 
@@ -68,6 +72,8 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 			snip.setSnipetId(res.getInt("snipetid"));
 			snip.setTextSnipet(res.getString("textsnipet"));
 			snip.setUsernameId(res.getString("idusername"));
+			snip.setName(res.getString("name"));
+
 			res.close();
 		}
 		
@@ -77,9 +83,33 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 	public List<Snipet> readListOfUsersSnipets(String userID) throws SQLException{
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		
-		String selectAllQuery = "select * from snipet where userid = ?";
+		String selectAllQuery = "select * from snipet where idusername = ?";
+
 		PreparedStatement statement = connection.prepareStatement(selectAllQuery);
 		statement.setString(1, userID);
+		
+		ResultSet res = statement.executeQuery();
+		
+		while (res.next()) {
+			Snipet snip = new Snipet();
+			snip.setSnipetId(res.getInt("snipetid"));
+			snip.setTextSnipet(res.getString("textsnipet"));
+			snip.setUsernameId(res.getString("idusername"));
+			snip.setName(res.getString("name"));
+
+			
+			listaSnipeta.add(snip);
+		}
+		
+		
+		return listaSnipeta;
+	}
+	
+	public List<Snipet> readListOfLastSnipets() throws SQLException{
+		List<Snipet> listaSnipeta = new ArrayList<>();
+		
+		String selectAllQuery = "select * from snipet limit 100";
+		Statement statement = connection.createStatement();
 		
 		ResultSet res = statement.executeQuery(selectAllQuery);
 		
@@ -88,6 +118,8 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 			snip.setSnipetId(res.getInt("snipetid"));
 			snip.setTextSnipet(res.getString("textsnipet"));
 			snip.setUsernameId(res.getString("idusername"));
+			snip.setName(res.getString("name"));
+
 			
 			listaSnipeta.add(snip);
 		}
@@ -98,13 +130,14 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 	
 	@Override
 	public void update(Snipet type, Integer index) throws SQLException {
-		String updateQuery = "update snipet set textsnipet = ?, idusername = ? where snipetid = ?";
+		String updateQuery = "update snipet set textsnipet = ?, idusername = ?, name = ? where snipetid = ?";
 		PreparedStatement statement = connection.prepareStatement(updateQuery);
 
 		statement.setString(1, type.getTextSnipet());
 		statement.setString(2, type.getUsernameId());
+		statement.setString(3, type.getName());
 		
-		statement.setInt(3, index);
+		statement.setInt(4, index);
 
 
 		statement.executeUpdate();
