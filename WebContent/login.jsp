@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<!--  directive -->
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +68,10 @@
 			<!-- end collapse navbar-collapse -->
 		</div>
 	</nav>
-
+	
+	<div class="text-center">
+		<h3><c:out value="${message}"></c:out></h3>
+	</div>
 
 	<div class="container">
 		<div class="row">
