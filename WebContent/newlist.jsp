@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -55,8 +55,8 @@ pre {
 			</div>
 			<!-- end collapse navbar-collapse -->
 	</nav>
-	
-	
+
+
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -70,21 +70,22 @@ pre {
 	</div>
 
 	<div class="text-center">
-		<h3><c:out value="${message}"></c:out></h3>
+		<h3>
+			<c:out value="${message}"></c:out>
+		</h3>
 	</div>
 
 	<div class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="listsnipets" method="get">
+					<form role="form">
 						<div class="form-group">
 							<div class="input-group">
-								<input type="text" name="search" class="form-control"
-									placeholder="Search  Snippet "> 
-									<span class="input-group-btn"> 
-									<button name="submit" class="btn btn-primary"
-									type="submit" value="search">search</button>
+								<input type="text" class="form-control"
+									placeholder="Search  Snippet "> <span
+									class="input-group-btn"> <a class="btn btn-primary"
+									type="submit">search</a>
 								</span>
 							</div>
 						</div>
@@ -96,54 +97,25 @@ pre {
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-offset-8 col-md-4">
+				<div class="col-md-8">
+
+					<h1 class="text-left text-primary">Snippets List</h1>
+
+				</div>
+				<div class="col-md-6">
+					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
+						data-target="#modal3">Show Snippet</a>
+				</div>
+				<div class="col-md-6">
 					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
 						data-target="#modal1">Add Snippet</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-offset-8 col-md-4">
-					<form action="listsnipets" method="get">
-						<button name="submit" class="btn btn-block btn-lg btn-warning" value="list">List All Snippets</button>
-					</form>
 				</div>
 			</div>
 			<hr>
 		</div>
 
 	</div>
-<!-- 	<div class="section container"> -->
-
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-lg-12"> -->
-<!-- 				<div id="snippet_item" class="container"> -->
-<!-- 					<div class="row"> -->
-<!-- 						<div class="col-md-12" id="border"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col-md-12"> -->
-<!-- 										<h3 class="text-primary">Name of snippet goes here</h3> -->
-										
-<!-- 										<pre> -->
-<%-- 										 <code>   </code> --%>
-<!--                                         </pre> -->
-                                        
-<!-- 										<div class="col-md-12"> -->
-<!-- 											<button type="submit" name="" value="" -->
-<!-- 												class="btn btn-primary btn-xs active"> -->
-<!-- 												<span class="glyphicon glyphicon-pencil"></span>Edit -->
-<!-- 											</button> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	
 
 
 
@@ -165,20 +137,42 @@ pre {
 				<div class="modal-body">
 					<form role="form" action="AddSnippet" method="post">
 						<div class="form-group">
-							<input class="form-control" name="snippetName" id="exampleInputEmail1"
-								placeholder="Snippet Name" type="text">
+							<input class="form-control" name="snippetName"
+								id="exampleInputEmail1" placeholder="Snippet Name" type="text">
 						</div>
 
 						<div class="form-group">
-							<textarea class="form-control" name="snippetCode" id="exampleInputEmail1"
-								placeholder="Snippet Code" type="text"></textarea>
+							<textarea class="form-control" name="snippetCode"
+								id="exampleInputEmail1" placeholder="Snippet Code" type="text"></textarea>
 						</div>
 
-					<div class="modal-footer">
-	
-						<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a> 
-						<button type="submit" class="btn btn-lg btn-warning" name="save">Save Snippet</button>
-					</div>
+						<div class="modal-footer">
+
+							<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a>
+							<button type="submit" class="btn btn-lg btn-warning" name="save">Save
+								Snippet</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal3">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h2 class="modal-title text-muted">Result</h2>
+				</div>
+				<div class="modal-body">
+					<pre>
+					
+					<code>   </code>
+                                        
+                    </pre>
+
+						
 					</form>
 				</div>
 			</div>

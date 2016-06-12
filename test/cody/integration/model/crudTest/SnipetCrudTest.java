@@ -72,6 +72,22 @@ public class SnipetCrudTest {
 		assertEquals(snipA.getName(), snip.getName());
 		
 	}
+	@Test
+	public void searchForSnipetsTestSnipetTest() throws SQLException {
+		
+		accDao.create(acc);
+		dao.create(snip);
+		dao.create(snip2);
+		
+		List<Snipet> snipList;
+		
+		
+		snipList = dao.searchForSnipets("Snip");
+		Snipet snipA = snipList.get(0);
+		
+		assertEquals(snipA.getName(), snip.getName());
+		
+	}
 	
 	@Test
 	public void readLatestSnipetTest() throws SQLException {
