@@ -64,6 +64,13 @@
 							<h3 class="panel-title text-center">Please Register</h3>
 						</div>
 						<div class="panel-body">
+						
+						<c:if test="${not empty message}">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">${message}</h3>
+						</div>
+						</c:if>
+						
 							<form role="form" action="Register" method="post">
 								<div class="form-group">
 									<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" required>

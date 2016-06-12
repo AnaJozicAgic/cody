@@ -1,5 +1,6 @@
 package cody.unit.bo.validation;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,4 +52,13 @@ public class ValidateAccountTest {
 		Account acc = data.getAccountNotValidEmail();
 		valid.isValid(acc);
 	}
+	
+	@Test
+	public void isValidTrebaRadit() throws ValidateException {
+		Account acc = data.getValidAccount();
+		boolean radi = valid.isValid(acc);
+		Assert.assertEquals(true, radi);
+	}
+	
+	
 }
