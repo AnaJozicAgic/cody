@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <html>
 <head>
 <meta charset="utf-8">
@@ -61,7 +61,7 @@ pre {
 				<div class="col-md-10">
 					<div class="page-header">
 						<h1 class="text-primary">
-							Welcome
+						Thanks for giving Snippets a try
 							<c:out value="${param.name}" default="Guest"></c:out>
 						</h1>
 					</div>
@@ -70,43 +70,54 @@ pre {
 		</div>
 	</div>
 
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
+	<div class="well">
+		<div class="table-responsive">
+			<form action="" method="">
+				<table class="table table-striped">
+					<thead>
+						<tr class="info">
+							<th><input type="radio" name="id" value="0" checked /></th>
+							<th>Snipet Name</th>
+							<th>Code</th>
+							<th>Show</th>
+							<th>Edit</th>
 
-					<h1 class="text-left text-primary">Snippets List</h1>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Snipet Name</th>
-								<th>view</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<td><input type="radio" name="id" value="" /></td>
 
 
-							</tr>
-						</thead>
-						<tbody>
+						<td><c:out value=" " /></td>
+						<td><c:out value=" " /></td>
 
-							<c:forEach items="${snipets}" var="snipet" varStatus="counter">
-								<tr>
-									<td>${counter.count}</td>
-									<td>${snipet.name}</td>
-									<td><a href="welcome?id=${snipet.snipetId}">view</a></td>
-									<td></td>
 
-								</tr>
-							</c:forEach>
 
-						</tbody>
-					</table>
 
-				</div>
-			</div>
-			<hr>
+						<td>
+							<p data-placement="top" data-toggle="tooltip" title="Show">
+								<button type="submit" name="" value=""
+									class="btn btn-success btn-md a">
+									<span class="glyphicon glyphicon-list-alt"></span>
+								</button>
+							</p>
+						</td>
+
+
+						<td><p data-placement="top" data-toggle="tooltip"
+								title="Edit">
+								<button type="submit" name="" value=""
+									class="btn btn-primary btn-md ">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</button>
+							</p></td>
+					</tbody>
+				</table>
+			</form>
 		</div>
-
 	</div>
+
 
 
 
