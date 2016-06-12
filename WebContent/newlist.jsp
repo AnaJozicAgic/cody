@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -55,71 +56,73 @@ pre {
 			<!-- end collapse navbar-collapse -->
 	</nav>
 
+
 	<div class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10">
 					<div class="page-header">
-						<h1 class="text-primary">
-						Thanks for giving Snippets a try
-							<c:out value="${param.name}" default="Guest"></c:out>
-						</h1>
+						<h1 class="text-primary">Welcome, ${user.username}</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="well">
-		<div class="table-responsive">
-			<form action="" method="">
-				<table class="table table-striped">
-					<thead>
-						<tr class="info">
-							<th>Snipet Name</th>
-							<th>Author</th>
-							<th>Show</th>
-							<th>Edit</th>
-
-						</tr>
-					</thead>
-					<c:forEach items="${snipets}" var="snipet">
-					<tbody>
-
-						<td><c:out value="${snipet.name}" /></td>
-						<td><c:out value="${snipet.usernameId}" /></td>
-
-						<td>
-							<p data-placement="top" data-toggle="tooltip" title="Show">
-								<button type="submit" name="" value=""
-									class="btn btn-success btn-md a">
-									<span class="glyphicon glyphicon-list-alt"></span>
-								</button>
-							</p>
-						</td>
-
-
-						<td><p data-placement="top" data-toggle="tooltip"
-								title="Edit">
-								<button type="submit" name="" value=""
-									class="btn btn-primary btn-md ">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</button>
-							</p></td>
-					</tbody>
-					</c:forEach>
-				</table>
-			</form>
-		</div>
+	<div class="text-center">
+		<h3>
+			<c:out value="${message}"></c:out>
+		</h3>
 	</div>
 
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control"
+									placeholder="Search  Snippet "> <span
+									class="input-group-btn"> <a class="btn btn-primary"
+									type="submit">search</a>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+
+					<h1 class="text-left text-primary">Snippets List</h1>
+
+				</div>
+				<div class="col-md-6">
+					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
+						data-target="#modal3">Show Snippet</a>
+				</div>
+				<div class="col-md-6">
+					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
+						data-target="#modal1">Add Snippet</a>
+				</div>
+			</div>
+			<hr>
+		</div>
+
+	</div>
+	
 
 
 
 	<footer class="navbar navbar-fixed-bottom">
 		<div class="row spacer">
 			<div class="text-center col-md-6 col-md-offset-3">
-				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Mladen</p>
+				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Dejan</p>
 			</div>
 		</div>
 	</footer>
@@ -132,25 +135,45 @@ pre {
 					<h2 class="modal-title text-muted">Add your Snippet Below</h2>
 				</div>
 				<div class="modal-body">
-					<form role="form">
+					<form role="form" action="AddSnippet" method="post">
 						<div class="form-group">
-							<input class="form-control" id="exampleInputEmail1"
-								placeholder="Snippet Name" type="text">
-						</div>
-					</form>
-					<form role="form">
-
-						<div class="form-group">
-							<textarea class="form-control" id="exampleInputEmail1"
-								placeholder="Snippet Code" type="text"></textarea>
+							<input class="form-control" name="snippetName"
+								id="exampleInputEmail1" placeholder="Snippet Name" type="text">
 						</div>
 
-					</form>
-					<div class="modal-footer">
+						<div class="form-group">
+							<textarea class="form-control" name="snippetCode"
+								id="exampleInputEmail1" placeholder="Snippet Code" type="text"></textarea>
+						</div>
 
-						<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a> <a
-							class="btn btn-lg btn-warning">Save Snippet</a>
-					</div>
+						<div class="modal-footer">
+
+							<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a>
+							<button type="submit" class="btn btn-lg btn-warning" name="save">Save
+								Snippet</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal3">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h2 class="modal-title text-muted">Result</h2>
+				</div>
+				<div class="modal-body">
+					<pre>
+					
+					<code>   </code>
+                                        
+                    </pre>
+
+						
+					</form>
 				</div>
 			</div>
 		</div>
@@ -174,7 +197,6 @@ pre {
 			</div>
 		</div>
 	</div>
-
 
 	<script type="text/javascript"
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
