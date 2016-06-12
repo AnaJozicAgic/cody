@@ -30,9 +30,10 @@
 
 </head>
 <body>
+  <br>
   <ul class="nav navbar-nav navbar-right">
     <a href="home.jsp">
-      <button>
+      <button class="btn btn-default">
         <span class="glyphicon glyphicon-log-in"></span>&nbsp;Home
       </button>
     </a>
