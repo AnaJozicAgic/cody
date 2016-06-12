@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Insert title here</title>
@@ -48,8 +49,11 @@
 				</ul>
 				
 			</div><!-- end collapse navbar-collapse -->
-		</div>
 	</nav>
+	
+	<div class="text-center">
+	<h3><c:out value="${message}"></c:out></h3>
+	</div>
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<div class="container" id="container1">
@@ -62,24 +66,24 @@
 						<div class="panel-body">
 							<form role="form" action="Register" method="post">
 								<div class="form-group">
-									<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+									<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" required>
 								</div>
 
 								<div class="form-group">
-									<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+									<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" required>
 								</div>
 								<div class="form-group">
-									<input type="text" name="username" id="first_name" class="form-control input-sm" placeholder="Username">
+									<input type="text" name="username" id="first_name" class="form-control input-sm" placeholder="Username" required>
 								</div>
 
 								<div class="form-group">
-									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" required>
 								</div>
 
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+											<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
 										</div>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
@@ -96,6 +100,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 		<footer class="navbar navbar-fixed-bottom">
