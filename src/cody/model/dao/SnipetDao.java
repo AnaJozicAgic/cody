@@ -57,13 +57,13 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 		return snip;
 	}
 	
-	public Snipet read(String userid) throws SQLException {
+	public Snipet read(String snipetName) throws SQLException {
 		Snipet snip = null;
 		
 		String query = "select * from snipet where idusername = ?";
 		
 		PreparedStatement statement = connection.prepareStatement(query);
-		statement.setString(1, userid);
+		statement.setString(1, snipetName);
 		
 		ResultSet res = statement.executeQuery();
 		
