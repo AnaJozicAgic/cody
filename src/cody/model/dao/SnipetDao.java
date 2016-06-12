@@ -83,10 +83,10 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 	public List<Snipet> readListOfUsersSnipets(String userID) throws SQLException{
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		
-		String selectAllQuery = "select * from snipet where idusername = ?";
+		String selectAllQuery = "select * from snipet where name like ?";
 
 		PreparedStatement statement = connection.prepareStatement(selectAllQuery);
-		statement.setString(1, userID);
+		statement.setString(1, "%" + userID + "%");
 		
 		ResultSet res = statement.executeQuery();
 		

@@ -8,7 +8,7 @@ public class ConnectionManager {
 		private static ConnectionManager instance = null;
 		
 		private final String USERNAME = "root";
-		private final String PASSWORD = "root";
+		private final String PASSWORD = "toor";
 		private final String CONN_STRING = "jdbc:mysql://localhost/snipet_djeljenje";
 		private final String DRIVER = "com.mysql.jdbc.Driver";
 		

@@ -77,14 +77,14 @@ pre {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="listsnipets" method="post">
+					<form role="form" action="listsnipets" method="get">
 						<div class="form-group">
 							<div class="input-group">
-								<input type="text" class="form-control"
+								<input type="text" name="search" class="form-control"
 									placeholder="Search  Snippet "> 
 									<span class="input-group-btn"> 
-									<button name="search" class="btn btn-primary"
-									type="submit">search</button>
+									<button name="submit" class="btn btn-primary"
+									type="submit" value="search">search</button>
 								</span>
 							</div>
 						</div>

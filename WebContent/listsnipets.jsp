@@ -91,7 +91,7 @@ pre {
 
 						<td>
 							<p data-placement="top" data-toggle="tooltip" title="Show">
-								<button type="submit" name="" value=""
+								<button type="submit" name="show" value="${snipet.textSnipet}"
 									class="btn btn-success btn-md a">
 									<span class="glyphicon glyphicon-list-alt"></span>
 								</button>
