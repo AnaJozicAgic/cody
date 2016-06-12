@@ -33,18 +33,24 @@ public class AddSnippet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Account user = (Account) request.getSession().getAttribute("user");
-		String textSnipet = request.getParameter("textSnipet");
+		String textSnipet = request.getParameter("snippetCode");
+		String nameSnipet = request.getParameter("snippetName");
 		
 		Snipet snipet = new Snipet();
 		snipet.setTextSnipet(textSnipet);
+		snipet.setName(nameSnipet);
 		snipet.setUsernameId(user.getUsername());
 		
 		SnipetBoImplementacija snipetBo = new SnipetBoImplementacija();
 		boolean result = snipetBo.addSnipet(snipet);
 		
+		
+		
 		if(result) {
+			request.setAttribute("message", "Snipet uspjesno dodat!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		} else {
+			request.setAttribute("message", "Doslo je do greske! Pokusajte ponovo!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 	}

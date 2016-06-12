@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -37,13 +37,13 @@ pre {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="bbb"> BILD IT TEAM X </a>
+				<a class="navbar-brand" href="welcome.jsp"> BILD IT TEAM X </a>
 			</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="home.jsp"> <span
+					<li><a href="welcome.jsp"> <span
 							class="glyphicon glyphicon-new-window"></span>&nbsp;Home
 					</a></li>
 					<li><a href="#modal2" data-toggle="modal"
@@ -55,16 +55,22 @@ pre {
 			</div>
 			<!-- end collapse navbar-collapse -->
 	</nav>
+	
+	
 	<div class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10">
 					<div class="page-header">
-						<h1 class="text-primary">Welcome "User Name goes here"</h1>
+						<h1 class="text-primary">Welcome, ${user.username}</h1>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="text-center">
+		<h3><c:out value="${message}"></c:out></h3>
 	</div>
 
 	<div class="section">
@@ -114,7 +120,7 @@ pre {
 								<div class="row">
 									<div class="col-md-12">
 										<h3 class="text-primary">Name of snippet goes here</h3>
-
+										
 										<pre>
 										 <code>   </code>
                                         </pre>
@@ -154,25 +160,23 @@ pre {
 					<h2 class="modal-title text-muted">Add your Snippet Below</h2>
 				</div>
 				<div class="modal-body">
-					<form role="form">
+					<form role="form" action="AddSnippet" method="post">
 						<div class="form-group">
-							<input class="form-control" id="exampleInputEmail1"
+							<input class="form-control" name="snippetName" id="exampleInputEmail1"
 								placeholder="Snippet Name" type="text">
 						</div>
-					</form>
-					<form role="form">
 
 						<div class="form-group">
-							<textarea class="form-control" id="exampleInputEmail1"
+							<textarea class="form-control" name="snippetCode" id="exampleInputEmail1"
 								placeholder="Snippet Code" type="text"></textarea>
 						</div>
 
-					</form>
 					<div class="modal-footer">
-
-						<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a> <a
-							class="btn btn-lg btn-warning">Save Snippet</a>
+	
+						<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a> 
+						<button type="submit" class="btn btn-lg btn-warning" name="save">Save Snippet</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -187,9 +191,11 @@ pre {
 						you want to logout?</h2>
 				</div>
 				<div class="modal-footer">
-					<a class="btn btn-block btn-lg btn-success center-block">Confirm</a>
-					<a class="btn btn-block btn-danger btn-lg center-block"
-						data-dismiss="modal">Cancel</a>
+					<form action="Logout" method="get">
+						<button class="btn btn-block btn-lg btn-success center-block">Confirm</button>
+						<a class="btn btn-block btn-danger btn-lg center-block"
+							data-dismiss="modal">Cancel</a>
+					</form>
 				</div>
 			</div>
 		</div>
