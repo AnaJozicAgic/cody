@@ -34,15 +34,24 @@ public class ListSnipets extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get the user from the session
-	Account account = (Account) request.getSession(false).getAttribute("account");
+		Account user = (Account) request.getSession().getAttribute("user");
 
 		SnipetBoImplementacija bo = new SnipetBoImplementacija();
 
-	List<Snipet> snipets = bo.readAllUsersSnipets(account.getUsername());
+		
+		if(request.getParameter("submit").equals("list")){
+			List<Snipet> snipets = bo.readAllUsersSnipets(user.getUsername());
 
-	request.setAttribute("snipets", snipets);
-		request.getSession().setAttribute("account", account);
-		request.getRequestDispatcher("listsnipets.jsp").forward(request, response);
+			if(snipets.isEmpty()) {
+			request.setAttribute("message", "Nema snipeta za prikaz!");
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			} else {
+				request.getSession().setAttribute("snipets", snipets );
+				response.sendRedirect("listsnipets.jsp");
+			}
+		} else if(request.getParameter("submit").equals("list")){
+			
+		}
 	}
 
 }
