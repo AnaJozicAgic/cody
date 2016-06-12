@@ -36,13 +36,13 @@ pre {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="bbb"> BILD IT TEAM X </a>
+				<a class="navbar-brand" href="welcome.jsp"> BILD IT TEAM X </a>
 			</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="home.jsp"> <span
+					<li><a href="welcome.jsp"> <span
 							class="glyphicon glyphicon-new-window"></span>&nbsp;Home
 					</a></li>
 					<li><a href="#modal2" data-toggle="modal"
@@ -76,24 +76,18 @@ pre {
 				<table class="table table-striped">
 					<thead>
 						<tr class="info">
-							<th><input type="radio" name="id" value="0" checked /></th>
 							<th>Snipet Name</th>
-							<th>Code</th>
+							<th>Author</th>
 							<th>Show</th>
 							<th>Edit</th>
 
 						</tr>
 					</thead>
+					<c:forEach items="${snipets}" var="snipet">
 					<tbody>
 
-						<td><input type="radio" name="id" value="" /></td>
-
-
-						<td><c:out value=" " /></td>
-						<td><c:out value=" " /></td>
-
-
-
+						<td><c:out value="${snipet.name}" /></td>
+						<td><c:out value="${snipet.usernameId}" /></td>
 
 						<td>
 							<p data-placement="top" data-toggle="tooltip" title="Show">
@@ -113,6 +107,7 @@ pre {
 								</button>
 							</p></td>
 					</tbody>
+					</c:forEach>
 				</table>
 			</form>
 		</div>
@@ -170,13 +165,16 @@ pre {
 						you want to logout?</h2>
 				</div>
 				<div class="modal-footer">
-					<a class="btn btn-block btn-lg btn-success center-block">Confirm</a>
-					<a class="btn btn-block btn-danger btn-lg center-block"
-						data-dismiss="modal">Cancel</a>
+					<form action="Logout" method="get">
+						<button class="btn btn-block btn-lg btn-success center-block">Confirm</button>
+						<a class="btn btn-block btn-danger btn-lg center-block"
+							data-dismiss="modal">Cancel</a>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 	<script type="text/javascript"
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

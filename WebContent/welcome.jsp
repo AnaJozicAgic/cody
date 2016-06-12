@@ -77,13 +77,14 @@ pre {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form">
+					<form role="form" action="listsnipets" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="Search  Snippet "> <span
-									class="input-group-btn"> <a class="btn btn-primary"
-									type="submit">search</a>
+									placeholder="Search  Snippet "> 
+									<span class="input-group-btn"> 
+									<button name="search" class="btn btn-primary"
+									type="submit">search</button>
 								</span>
 							</div>
 						</div>
@@ -95,52 +96,54 @@ pre {
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
-
-					<h1 class="text-left text-primary">Snippets List</h1>
-
-				</div>
-				<div class="col-md-4">
+				<div class="col-md-offset-8 col-md-4">
 					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
 						data-target="#modal1">Add Snippet</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-8 col-md-4">
+					<form action="listsnipets" method="get">
+						<button name="submit" class="btn btn-block btn-lg btn-warning" value="list">List All Snippets</button>
+					</form>
 				</div>
 			</div>
 			<hr>
 		</div>
 
 	</div>
-	<div class="section container">
+<!-- 	<div class="section container"> -->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div id="snippet_item" class="container">
-					<div class="row">
-						<div class="col-md-12" id="border">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-12">
-										<h3 class="text-primary">Name of snippet goes here</h3>
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-lg-12"> -->
+<!-- 				<div id="snippet_item" class="container"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-md-12" id="border"> -->
+<!-- 							<div class="container"> -->
+<!-- 								<div class="row"> -->
+<!-- 									<div class="col-md-12"> -->
+<!-- 										<h3 class="text-primary">Name of snippet goes here</h3> -->
 										
-										<pre>
-										 <code>   </code>
-                                        </pre>
+<!-- 										<pre> -->
+<%-- 										 <code>   </code> --%>
+<!--                                         </pre> -->
                                         
-										<div class="col-md-12">
-											<button type="submit" name="" value=""
-												class="btn btn-primary btn-xs active">
-												<span class="glyphicon glyphicon-pencil"></span>Edit
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
+<!-- 										<div class="col-md-12"> -->
+<!-- 											<button type="submit" name="" value="" -->
+<!-- 												class="btn btn-primary btn-xs active"> -->
+<!-- 												<span class="glyphicon glyphicon-pencil"></span>Edit -->
+<!-- 											</button> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 
 

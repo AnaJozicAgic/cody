@@ -50,7 +50,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="bbb"> BILD IT TEAM X </a>
+				<a class="navbar-brand" href="home.jsp"> BILD IT TEAM X </a>
 			</div>
 
 			<div class="collapse navbar-collapse"
@@ -72,7 +72,6 @@
 	<div class="text-center">
 		<h3><c:out value="${message}"></c:out></h3>
 	</div>
-	<br />
 
 	<div class="container">
 		<div class="row">
