@@ -80,6 +80,7 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 		return snip;
 	}
 
+
 	public List<Snipet> readListOfUsersSnipets(String userID) throws SQLException{
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		
@@ -120,6 +121,31 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 			snip.setUsernameId(res.getString("idusername"));
 			snip.setName(res.getString("name"));
 
+			
+			listaSnipeta.add(snip);
+		}
+		
+		
+		return listaSnipeta;
+	}
+	
+	public List<Snipet> searchForSnipets(String name) throws SQLException{
+		List<Snipet> listaSnipeta = new ArrayList<>();
+		
+		String selectAllQuery = "select * from snipet where name like ? ";
+		PreparedStatement statement = connection.prepareStatement(selectAllQuery);
+		
+		statement.setString(1, "%" + name + "%");
+				
+		ResultSet res = statement.executeQuery();
+		
+		while (res.next()) {
+			Snipet snip = new Snipet();
+			snip.setSnipetId(res.getInt("snipetid"));
+			snip.setTextSnipet(res.getString("textsnipet"));
+			snip.setUsernameId(res.getString("idusername"));
+			snip.setName(res.getString("name"));
+			
 			
 			listaSnipeta.add(snip);
 		}

@@ -45,8 +45,18 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 		return snip;
 	}
 
+	public Snipet readSnipetByName(String snipetId) {
+		Snipet snip = null;
+		try {
+			snip = dao.read(snipetId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return snip;
+	}
+
 	@Override
-	public boolean updateSnipet(Snipet snipet,int snipetId) {
+	public boolean updateSnipet(Snipet snipet, int snipetId) {
 		try {
 			dao.update(snipet, snipetId);
 		} catch (SQLException e) {
@@ -63,10 +73,21 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 			e.printStackTrace();
 		}
 		return true;
-	
+
 	}
 	
-	public List<Snipet> readAllUsersSnipets(String username){
+	public List<Snipet> searchSnippets(String username) {
+		List<Snipet> listaSnipeta = new ArrayList<>();
+		try {
+			listaSnipeta = dao.searchForSnipets(username);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaSnipeta;
+	}
+	
+	public List<Snipet> readAllUsersSnipets(String username) {
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		try {
 			listaSnipeta = dao.readListOfUsersSnipets(username);
@@ -75,7 +96,8 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 		}
 		return listaSnipeta;
 	}
-	public List<Snipet> readLatestSnipets(){
+
+	public List<Snipet> readLatestSnipets() {
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		try {
 			listaSnipeta = dao.readListOfLastSnipets();
@@ -84,9 +106,10 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 		}
 		return listaSnipeta;
 	}
-	public boolean isNameAlredyExists(String name){
+
+	public boolean isNameAlredyExists(String name) {
 		try {
-			if(dao.read(name) == null){
+			if (dao.read(name) == null) {
 				return false;
 			}
 		} catch (SQLException e) {
