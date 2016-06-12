@@ -100,13 +100,13 @@
   </div>
   <!-- content-block -->
 
-  <footer class="navbar navbar-fixed-bottom">
-    <div class="row spacer">
-      <div class="text-center col-md-6 col-md-offset-3">
-        <p>Copyright &copy; 2016 Ana, Dijana, Ensar & Mladen</p>
-      </div>
-    </div>
-  </footer>
+ <footer class="navbar navbar-fixed-bottom">
+		<div class="row spacer">
+			<div class="text-center col-md-6 col-md-offset-3">
+				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Dejan</p>
+			</div>
+		</div>
+	</footer>
 
   <script>
     new WOW().init();

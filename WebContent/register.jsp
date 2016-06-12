@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     --%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,12 +111,12 @@
 
 
 		<footer class="navbar navbar-fixed-bottom">
-			<div class="row spacer" >
-				<div class="text-center col-md-6 col-md-offset-3">
-					<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Mladen</p>
-				</div>
+		<div class="row spacer">
+			<div class="text-center col-md-6 col-md-offset-3">
+				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Dejan</p>
 			</div>
-		</footer>
+		</div>
+	</footer>
 
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
