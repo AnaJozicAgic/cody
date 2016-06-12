@@ -84,5 +84,15 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 		}
 		return listaSnipeta;
 	}
+	public boolean isNameAlredyExists(String name){
+		try {
+			if(dao.read(name) == null){
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
 
 }
