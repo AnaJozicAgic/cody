@@ -72,6 +72,7 @@
 	<div class="text-center">
 		<h3><c:out value="${message}"></c:out></h3>
 	</div>
+	<br />
 
 	<div class="container">
 		<div class="row">
