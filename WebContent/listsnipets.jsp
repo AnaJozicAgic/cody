@@ -90,7 +90,8 @@ pre {
 						<td><c:out value="${snipet.usernameId}" /></td>
 
 						<td>
-							<p data-placement="top" data-toggle="tooltip" title="Show">
+							<a data-placement="top" data-toggle="tooltip" title="Show">
+							</a>
 								<button type="submit" name="show" value="${snipet.textSnipet}"
 									class="btn btn-success btn-md a">
 									<span class="glyphicon glyphicon-list-alt"></span>

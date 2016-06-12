@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cody.model.bo.SnipetBoImplementacija;
-import cody.model.dao.SnipetDao;
 import cody.model.dto.Account;
 import cody.model.dto.Snipet;
 
@@ -43,25 +42,21 @@ public class ListSnipets extends HttpServlet {
 			List<Snipet> snipets = bo.readLatestSnipets();
 
 			if(snipets.isEmpty()) {
-			request.setAttribute("message", "Nema snipeta za prikaz!");
-			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+				request.setAttribute("message", "Nema snipeta za prikaz!");
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			} else {
-				request.setAttribute("snipets", snipets );
+				request.getSession().setAttribute("snipets", snipets );
 				response.sendRedirect("listsnipets.jsp");
 			}
 		} else if(request.getParameter("submit").equals("search")){
 			List<Snipet> snipets = bo.readAllUsersSnipets(request.getParameter("search"));
-			System.out.println(request.getParameter("search"));
 			if(snipets.isEmpty()) {
 				request.setAttribute("message", "Nema snipeta za prikaz!");
 				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			} else {
-				request.setAttribute("snipets", snipets );
+				request.getSession().setAttribute("snipets", snipets );
 				response.sendRedirect("listsnipets.jsp");
-			}
-			
-			
-			
+			}	
 		}
 	}
 
