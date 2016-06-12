@@ -49,6 +49,7 @@ public class Register extends HttpServlet {
 
 		} catch (ValidateException e) {
 			request.setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("register.jsp").forward(request, response);
 		}
 	}
 	

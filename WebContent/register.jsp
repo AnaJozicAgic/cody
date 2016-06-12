@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,6 +60,13 @@
 							<h3 class="panel-title text-center">Please Register</h3>
 						</div>
 						<div class="panel-body">
+						
+						<c:if test="${not empty message}">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">${message}</h3>
+						</div>
+						</c:if>
+						
 							<form role="form" action="Register" method="post">
 								<div class="form-group">
 									<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">

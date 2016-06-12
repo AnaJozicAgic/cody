@@ -15,11 +15,17 @@ public class UserBoImplementacija implements UserBoInterface{
 	@Override
 	public boolean addUser(Account user) throws ValidateException {
 		if(valid.isValid(user)){
+			
+			if(userExists(user.getUsername())){
+				throw new ValidateException("Taj username vec postoji");
+			}
+			
 			try {
 				accDao.create(user);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 		}
 		return true;
 	}
