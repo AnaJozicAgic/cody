@@ -62,7 +62,7 @@ pre {
 					<div class="page-header">
 						<h1 class="text-primary">
 						Thanks for giving Snippets a try
-							<c:out value="${param.name}" default="Guest"></c:out>
+							<c:out value="${user.name}" default="Guest"></c:out>
 						</h1>
 					</div>
 				</div>
@@ -76,27 +76,27 @@ pre {
 				<table class="table table-striped">
 					<thead>
 						<tr class="info">
-							<th>Snipet Name</th>
+							<th>Snippet Name</th>
 							<th>Author</th>
 							<th>Show</th>
 							<th>Edit</th>
 
 						</tr>
 					</thead>
-					<c:forEach items="${snipets}" var="snipet">
 					<tbody>
+					<c:forEach items="${snippets}" var="snippet">
+					<tr>
 
-						<td><c:out value="${snipet.name}" /></td>
-						<td><c:out value="${snipet.usernameId}" /></td>
+						<td><c:out value="${snippet.name}" /></td>
+						<td><c:out value="${snippet.usernameId}" /></td>
 
 						<td>
 							<a data-placement="top" data-toggle="tooltip" title="Show">
 							</a>
-								<button type="submit" name="show" value="${snipet.textSnipet}"
+								<button type="submit" name="show" value="${snippet.textSnipet}"
 									class="btn btn-success btn-md a">
 									<span class="glyphicon glyphicon-list-alt"></span>
 								</button>
-							</p>
 						</td>
 
 
@@ -107,8 +107,9 @@ pre {
 									<span class="glyphicon glyphicon-pencil"></span>
 								</button>
 							</p></td>
-					</tbody>
+						</tr>	
 					</c:forEach>
+					</tbody>
 				</table>
 			</form>
 		</div>
@@ -117,7 +118,7 @@ pre {
 
 
 
-<footer class="navbar navbar-fixed-bottom">
+	<footer class="navbar navbar-fixed-bottom">
 		<div class="row spacer">
 			<div class="text-center col-md-6 col-md-offset-3">
 				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Dejan</p>

@@ -14,31 +14,30 @@ import cody.model.dto.Account;
 import cody.model.dto.Snipet;
 
 /**
- * Servlet implementation class ListSnipets
+ * Servlet implementation class Search
  */
-@WebServlet("/listsnipets")
-public class ListSnipets extends HttpServlet {
+@WebServlet("/Search")
+public class Search extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListSnipets() {
+    public Search() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    /**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// get the user from the session
+
 		Account user = (Account) request.getSession().getAttribute("user");
 
 		SnipetBoImplementacija bo = new SnipetBoImplementacija();
-
-		List<Snipet> snippets = bo.readAllSnipets();
-
+		
+		List<Snipet> snippets = bo.searchSnippets(request.getParameter("search"));
 		if (snippets.isEmpty()) {
 			request.setAttribute("message", "Nema snipeta za prikaz!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
@@ -46,7 +45,6 @@ public class ListSnipets extends HttpServlet {
 			request.getSession().setAttribute("snippets", snippets);
 			response.sendRedirect("listsnipets.jsp");
 		}
-		
 	}
 
 }

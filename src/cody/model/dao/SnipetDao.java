@@ -81,13 +81,12 @@ public class SnipetDao implements Create<Snipet>, Read<Snipet, Integer>, Update<
 	}
 
 
-	public List<Snipet> readListOfUsersSnipets(String userID) throws SQLException{
+	public List<Snipet> readListOfSnipets() throws SQLException{
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		
-		String selectAllQuery = "select * from snipet where name like ?";
+		String selectAllQuery = "select * from snipet";
 
 		PreparedStatement statement = connection.prepareStatement(selectAllQuery);
-		statement.setString(1, "%" + userID + "%");
 		
 		ResultSet res = statement.executeQuery();
 		
