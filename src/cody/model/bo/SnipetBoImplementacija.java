@@ -87,10 +87,10 @@ public class SnipetBoImplementacija implements SnipetBoInterface {
 		return listaSnipeta;
 	}
 	
-	public List<Snipet> readAllUsersSnipets(String username) {
+	public List<Snipet> readAllSnipets() {
 		List<Snipet> listaSnipeta = new ArrayList<>();
 		try {
-			listaSnipeta = dao.readListOfUsersSnipets(username);
+			listaSnipeta = dao.readListOfSnipets();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

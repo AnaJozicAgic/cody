@@ -43,14 +43,17 @@ public class AddSnippet extends HttpServlet {
 		
 		SnipetBoImplementacija snipetBo = new SnipetBoImplementacija();
 		boolean result = snipetBo.addSnipet(snipet);
+		boolean exists = snipetBo.isNameAlredyExists(snipet.getName());
 		
 		
-		
-		if(result) {
-			request.setAttribute("message", "Snipet uspjesno dodat!");
+		if(result && !exists) {
+			request.setAttribute("message", "Snippet added successfully!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		} else {
-			request.setAttribute("message", "Doslo je do greske! Pokusajte ponovo!");
+			if(exists)
+				request.setAttribute("message", "Snippet name allready exists!");
+			else
+				request.setAttribute("message", "An error has occurred!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 	}

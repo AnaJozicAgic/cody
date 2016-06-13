@@ -1,6 +1,7 @@
 package cody.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cody.model.bo.SnipetBoImplementacija;
 import cody.model.bo.UserBoImplementacija;
 import cody.model.dto.Account;
+import cody.model.dto.Snipet;
 
 /**
  * Servlet implementation class Login
@@ -37,8 +40,12 @@ public class Login extends HttpServlet {
 		UserBoImplementacija userBo = new UserBoImplementacija();
 		Account user = userBo.readUser(username, password);
 		
+		SnipetBoImplementacija snipetBo = new SnipetBoImplementacija();
+		List<Snipet> snippets = snipetBo.readLatestSnipets();
+		
 		if(user != null) {
 			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("snippets", snippets);
 			response.sendRedirect("welcome.jsp");
 		} else {
 			request.setAttribute("message", "Pokusajte ponovo!");

@@ -18,14 +18,18 @@
 	<div class="container" class="row" class="col-md-10">
 		<div class="page-header">
 			<h1 class="text-primary">
-				Thanks for giving Cody a try
-				<c:out value="${param.name}" default=""></c:out>
+				Thanks for giving Cody a try, 
+				<c:out value="${user.username}" default=""></c:out>
 			</h1>
 		</div>
 	</div>
+	
+	<div class="text-center">
+		<h3><c:out value="${message}"></c:out></h3>
+	</div>
 
 	<div class="container" class="row" class="col-md-12">
-		<form role="form" action="listsnipets" method="get">
+		<form role="form" action="Search" method="get">
 			<div class="form-group">
 				<div class="input-group">
 					<input type="text" name="search" class="form-control"
@@ -68,26 +72,26 @@
 			<table class="table table-striped">
 				<thead>
 					<tr class="info">
-						<th>Number</th>
 						<th>Snippet Name</th>
 						<th>Author</th>
 						<th>Show</th>
 					</tr>
 				</thead>
-				<c:forEach items="${snipets}" var="snipet">
+				<c:forEach items="${snippets}" var="snippet"  varStatus="loop" begin="1" end="10">
 					<tbody>
-
-						<td><c:out value="${snipet.name}" /></td>
-						<td><c:out value="${snipet.usernameId}" /></td>
+						<tr>
+						<td><c:out value="${snippet.name}" /></td>
+						<td><c:out value="${snippet.usernameId}" /></td>
 						<td>
 							<p data-placement="top" data-toggle="tooltip" title="Show">
-								<button type="submit" name="show" value="${snipet.textSnipet}"
+								<button type="submit" name="show" value="${snippet.textSnipet}"
 									class="btn btn-success btn-md" data-toggle="modal"
 									data-target="#modal3">
 									<span class="glyphicon glyphicon-list-alt"></span>
 								</button>
 							</p>
 						</td>
+						</tr>
 					</tbody>
 				</c:forEach>
 			</table>
@@ -105,23 +109,21 @@
 					<h2 class="modal-title text-muted">Add your Snippet Below</h2>
 				</div>
 				<div class="modal-body">
-					<form role="form">
+					<form role="form" action="AddSnippet" method="post">
 						<div class="form-group">
-							<input class="form-control" placeholder="Snippet Name"
+							<input name="snippetName" class="form-control" placeholder="Snippet Name"
 								type="text">
 						</div>
-					</form>
-					<form role="form">
 						<div class="form-group">
-							<textarea rows="20" cols="20" class="form-control"
+							<textarea name="snippetCode" rows="20" cols="20" class="form-control"
 								placeholder="Snippet Code" type="text"></textarea>
 						</div>
-					</form>
 					<div class="modal-footer">
 
 						<a class="btn btn-warning btn-md" data-dismiss="modal">Cancel</a>
-						<a class="btn btn-md btn-success">Save Snippet</a>
+						<button type="submit" name="submit" class="btn btn-md btn-success">Save Snippet</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
