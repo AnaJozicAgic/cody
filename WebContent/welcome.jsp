@@ -1,159 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<style>
-#border {
-	border: 3px #ffa366 dashed;
-}
 
-hr {
-	margin: 5px;
-}
-
-pre {
-	margin-right: 30px;
-}
-</style>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<jsp:include page="includes/welcomeheader.jsp"></jsp:include>
 
-		<div class="container container-fluid">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="welcome.jsp"> BILD IT TEAM X </a>
-			</div>
-
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="welcome.jsp"> <span
-							class="glyphicon glyphicon-new-window"></span>&nbsp;Home
-					</a></li>
-					<li><a href="#modal2" data-toggle="modal"
-						data-target="#modal2"> <span class="glyphicon glyphicon-off"></span>&nbsp;Logout
-					</a></li>
-
-				</ul>
-
-			</div>
-			<!-- end collapse navbar-collapse -->
-	</nav>
-	
-	
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10">
-					<div class="page-header">
-						<h1 class="text-primary">Welcome, ${user.username}</h1>
-					</div>
-				</div>
-			</div>
+	<div class="container" class="row" class="col-md-10">
+		<div class="page-header">
+			<h1 class="text-primary">
+				Thanks for giving Cody a try
+				<c:out value="${param.name}" default=""></c:out>
+			</h1>
 		</div>
 	</div>
 
-	<div class="text-center">
-		<h3><c:out value="${message}"></c:out></h3>
-	</div>
-
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form role="form" action="listsnipets" method="get">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" name="search" class="form-control"
-									placeholder="Search  Snippet "> 
-									<span class="input-group-btn"> 
-									<button name="submit" class="btn btn-primary"
-									type="submit" value="search">search</button>
-								</span>
-							</div>
-						</div>
-					</form>
+	<div class="container" class="row" class="col-md-12">
+		<form role="form" action="listsnipets" method="get">
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" name="search" class="form-control"
+						placeholder="Search  Snippet "> <span
+						class="input-group-btn">
+						<button name="submit" class="btn btn-primary" type="submit"
+							value="search">search</button>
+					</span>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-offset-8 col-md-4">
-					<a class="btn btn-block btn-lg btn-warning" data-toggle="modal"
+
+	<div class="container">
+		<div class="row">
+			<form action="listsnipets" method="get">
+				<div class="col-md-6">
+					<button name="submit" class="btn btn-block btn-lg btn-info"
+						value="list">List All Snippets</button>
+				</div>
+				<div class="col-md-6">
+					<a class="btn btn-block btn-lg btn-info" data-toggle="modal"
 						data-target="#modal1">Add Snippet</a>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-offset-8 col-md-4">
-					<form action="listsnipets" method="get">
-						<button name="submit" class="btn btn-block btn-lg btn-warning" value="list">List All Snippets</button>
-					</form>
-				</div>
-			</div>
-			<hr>
+			</form>
 		</div>
 
+		<hr>
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-default text-center">This is first 10 snippets
+				</h1>
+				<hr>
+			</div>
+		</div>
 	</div>
-<!-- 	<div class="section container"> -->
 
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-lg-12"> -->
-<!-- 				<div id="snippet_item" class="container"> -->
-<!-- 					<div class="row"> -->
-<!-- 						<div class="col-md-12" id="border"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col-md-12"> -->
-<!-- 										<h3 class="text-primary">Name of snippet goes here</h3> -->
-										
-<!-- 										<pre> -->
-<%-- 										 <code>   </code> --%>
-<!--                                         </pre> -->
-                                        
-<!-- 										<div class="col-md-12"> -->
-<!-- 											<button type="submit" name="" value="" -->
-<!-- 												class="btn btn-primary btn-xs active"> -->
-<!-- 												<span class="glyphicon glyphicon-pencil"></span>Edit -->
-<!-- 											</button> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
+	<div class="container" class="well" class="table-responsive">
+		<form action="">
+			<table class="table table-striped">
+				<thead>
+					<tr class="info">
+						<th>Number</th>
+						<th>Snippet Name</th>
+						<th>Author</th>
+						<th>Show</th>
+					</tr>
+				</thead>
+				<c:forEach items="${snipets}" var="snipet">
+					<tbody>
 
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+						<td><c:out value="${snipet.name}" /></td>
+						<td><c:out value="${snipet.usernameId}" /></td>
+						<td>
+							<p data-placement="top" data-toggle="tooltip" title="Show">
+								<button type="submit" name="show" value="${snipet.textSnipet}"
+									class="btn btn-success btn-md" data-toggle="modal"
+									data-target="#modal3">
+									<span class="glyphicon glyphicon-list-alt"></span>
+								</button>
+							</p>
+						</td>
+					</tbody>
+				</c:forEach>
+			</table>
+		</form>
+	</div>
 
+	<jsp:include page="includes/footer.jsp"></jsp:include>
 
-
-	<footer class="navbar navbar-fixed-bottom">
-		<div class="row spacer">
-			<div class="text-center col-md-6 col-md-offset-3">
-				<p>Copyright &copy; 2016 Ana, Dijana, Ensar & Dejan</p>
-			</div>
-		</div>
-	</footer>
 	<div class="modal fade" id="modal1">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -163,23 +105,23 @@ pre {
 					<h2 class="modal-title text-muted">Add your Snippet Below</h2>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="AddSnippet" method="post">
+					<form role="form">
 						<div class="form-group">
-							<input class="form-control" name="snippetName" id="exampleInputEmail1"
-								placeholder="Snippet Name" type="text">
+							<input class="form-control" placeholder="Snippet Name"
+								type="text">
 						</div>
-
+					</form>
+					<form role="form">
 						<div class="form-group">
-							<textarea class="form-control" name="snippetCode" id="exampleInputEmail1"
+							<textarea rows="20" cols="20" class="form-control"
 								placeholder="Snippet Code" type="text"></textarea>
 						</div>
-
-					<div class="modal-footer">
-	
-						<a class="btn btn-default btn-lg" data-dismiss="modal">Close</a> 
-						<button type="submit" class="btn btn-lg btn-warning" name="save">Save Snippet</button>
-					</div>
 					</form>
+					<div class="modal-footer">
+
+						<a class="btn btn-warning btn-md" data-dismiss="modal">Cancel</a>
+						<a class="btn btn-md btn-success">Save Snippet</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -196,8 +138,35 @@ pre {
 				<div class="modal-footer">
 					<form action="Logout" method="get">
 						<button class="btn btn-block btn-lg btn-success center-block">Confirm</button>
-						<a class="btn btn-block btn-danger btn-lg center-block"
+						<a class="btn btn-block btn-warning btn-lg center-block"
 							data-dismiss="modal">Cancel</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal3">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h2 class="modal-title text-muted">El ubaciti ime snipeta ovde</h2>
+				</div>
+				<div class="modal-body">
+					<pre>
+					
+					<code> El naredba ide ovde da ispise code koji je korisnik stisnua na show ikoni </code>
+                                        
+                    </pre>
+				</div>
+				<div class="modal-footer">
+					<form action="">
+						<button class="btn btn-s  btn-primary">
+							Edit <span class="glyphicon glyphicon-pencil"></span>
+
+						</button>
 					</form>
 				</div>
 			</div>
